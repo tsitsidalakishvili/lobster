@@ -1,25 +1,21 @@
-name: data import
+name: Lobsters Data Import
 
 on:
   push:
     paths:
-      - .github/workflows/lobsters.yml # Only run a new workflow every time this file (flat.yaml) file changes
-  workflow_dispatch: # Required even though this is currently empty
+      - .github/workflows/lobsters.yml
+  workflow_dispatch:
   schedule:
-    - cron: '*/10 * * * *' # Run once a month
+    - cron: '*/60 * * * *'
 
 jobs:
   scheduled:
     runs-on: ubuntu-latest
-    steps: # This workflow has 3 steps
-      # The first step is to check out the repository so it can read the files inside of it and do other operations
+    steps:
       - name: Check out repo
         uses: actions/checkout@v2
-      # This step installs Deno, which is a new Javascript runtime that improves on Node. We'll use it for postprocessing later
       - name: Fetch newest
         uses: githubocto/flat@v2
         with:
-          http_url: https://lobste.rs/newest.json # The data to fetch every 5 minutes
-          downloaded_filename: newest.json # The http_url gets saved and renamed in our repository as btc-price.json
-
- 
+          http_url: https://lobste.rs/newest.json
+          downloaded_filename: newest.json
