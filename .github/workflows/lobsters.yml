@@ -6,7 +6,7 @@ on:
       - .github/workflows/lobsters.yml # Only run a new workflow every time this file (flat.yaml) file changes
   workflow_dispatch: # Required even though this is currently empty
   schedule:
-    - cron: '*/60 * * * *' # Run once a month
+    - cron: '*/10 * * * *' # Run once a month
 
 jobs:
   scheduled:
