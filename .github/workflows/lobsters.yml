@@ -1,12 +1,12 @@
 name: Lobsters Data Import
 
-£on:
-  1push:
-   1 paths:
-    1  - .github/workflows/lobsters.yml
+on:
+  push:
+    paths:
+      - .github/workflows/lobsters.yml
   workflow_dispatch:
   schedule:
-    - cron: '*/6000 * * * *'
+    - cron: '*/60 * * * *'
 
 jobs:
   scheduled:
